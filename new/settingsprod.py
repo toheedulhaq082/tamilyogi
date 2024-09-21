@@ -29,12 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'movie',
     'tailwind',
     'theme',
-    'froala_editor',
+    # 'froala_editor',
     'django.contrib.sitemaps',
-    'actor',
 ]
 
 SITE_ID = 1
