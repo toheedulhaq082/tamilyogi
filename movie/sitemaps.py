@@ -7,7 +7,7 @@ class MovieSitemap(Sitemap):
     protocol = 'https'
 
     def items(self):
-        return ['home', 'kamal_haasan'] 
+        return ['home', 'kamal_haasan', 'dhanush', 'vikram', 'vijay-sethupathi'] 
 
     def location(self, item):
         return reverse(item)

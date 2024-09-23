@@ -54,6 +54,18 @@
            {% endfor %}
            </div>
 
+
+           <div class='flex items-center justify-center'>
+            <div id="alert-border-1" class="flex items-center md:w-1/2 p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <div class="ms-3 text-sm font-medium">
+                  If you want to find Dhanush movies to watch, click <a href='{% url "dhanush" %}' class="font-semibold underline hover:no-underline">here</a>.
+                </div>
+                
+            </div></div>
+
            <section class="flex flex-col items-center my-auto mx-auto bg-[#1c1c1cd6] w-full md:w-3/4 border-t-2 border-x-0 border-solid border-white">
             <div class="container px-6 py-10 mx-auto">
                 <h2 class="text-xl font-semibold capitalize lg:text-2xl text-yellow-500">What movie should I watch?</h2>
@@ -64,12 +76,12 @@
 
                 <h2 class="text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Best curated list of Kamal Haasan movies</h2>
                 <p class="mt-2 text-gray-300 xl:mt-4 dark:text-gray-300">
-                  ChooseMovieForME has curated a list of the best Kamal Haasan movies that you should watch. These movies are picked across all genres and are the best of Kamal Haasan.
+                  <a href='{% url "home" %}' class="font-semibold underline hover:no-underline">TamilYogi VIP</a> has curated a list of the best Kamal Haasan movies that you should watch. These movies are picked across all genres and are the best of Kamal Haasan.
 
                 </p>
                 <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Best Movie Recommendations</h2>
                 <p class="mt-1 text-gray-300 dark:text-gray-300">
-                  ChooseMovieForME provides the best movie recommendations for Kamal Haasan movies. These movies are picked based on the popularity and ratings of Kamal Haasan movies.
+                  TamilYogi VIP provides the best movie recommendations for Kamal Haasan movies. These movies are picked based on the popularity and ratings of Kamal Haasan movies.
 
                 </p>
                 <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Where to watch Kamal Haasan Movies?</h2>
@@ -79,7 +91,7 @@
                 </p>
                 <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Couldn't find Kamal Haasan Movies of your choce?</h2>
                 <p class="mt-1 text-gray-300 dark:text-gray-300">
-                  Visit ChooseMovieForME to find more Kamal Haasan movies of your choice. ChooseMovieForME has a vast collection of movies that you can explore and watch. You can also find movies from other genres and actors on ChooseMovieForME.
+                  Visit TamilYogi VIP to find more Kamal Haasan movies of your choice. TamilYogi VIP has a vast collection of movies that you can explore and watch. You can also find movies from other genres and actors on TamilYogi VIP.
                 </p>
                 
                 

@@ -7,9 +7,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.home, name='home'),
     path('kamal-haasan', views.Kamal, name='kamal_haasan'),
-    # path('vikram', views.vikram, name='Vikram'),
-    # path('dhanush', views.dhanush, name='Dhanush'),
-    # path('vijay_sethupathi', views.vijay_sethupathi, name='Vijay_Sethupathi'),
+    path('vikram', views.vikram, name='vikram'),
+    path('dhanush', views.dhanush, name='dhanush'),
+    path('vijay-sethupathi', views.vijay_sethupathi, name='vijay-sethupathi'),
     # path('rajnikanth', views.rajnikanth, name='Rajnikanth'),
     # path('suriya_sivakumar', views.suriya, name='Suriya_Sivakumar'),
     # path('joseph_vijay', views.joseph_vijay, name='Joseph_Vijay'),
