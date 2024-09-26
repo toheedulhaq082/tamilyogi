@@ -1,17 +1,18 @@
 from django.urls import path, include
 from . import views
+from .views import HomePageView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', HomePageView.as_view(), name='home'),
     path('kamal-haasan', views.Kamal, name='kamal_haasan'),
     path('vikram', views.vikram, name='vikram'),
     path('dhanush', views.dhanush, name='dhanush'),
     path('vijay-sethupathi', views.vijay_sethupathi, name='vijay-sethupathi'),
     # path('rajnikanth', views.rajnikanth, name='Rajnikanth'),
-    # path('suriya_sivakumar', views.suriya, name='Suriya_Sivakumar'),
+    path('suriya_sivakumar', views.suriya, name='suriya_sivakumar'),
     # path('joseph_vijay', views.joseph_vijay, name='Joseph_Vijay'),
     # path('ajith_kumar', views.ajith_kumar, name='Ajith_Kumar'),
     # path('vishal_krishna', views.vishal_krishna, name='Vishal_Krishna'),
@@ -25,6 +26,7 @@ urlpatterns = [
     # path('rana_daggubati', views.rana_daggubati, name='Rana_Daggubati'),
     # path('nani', views.nani, name='Nani'),
     # path('vijay_deverakonda', views.vijay_deverakonda, name='Vijay_Deverakonda'),
+    path('<slug>', views.blog_detail, name='blog_detail'),
 ]
 
 if settings.DEBUG:

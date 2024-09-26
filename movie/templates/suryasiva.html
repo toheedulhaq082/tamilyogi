@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+<meta name="description" content="Discover the top 20 must-watch Suriya Sivakumar films. From action-packed thrillers to heartwarming dramas, find your favorite Cage movies and explore his iconic performances.">
+<meta name="keywords" content="Suriya Sivakumar, Indian cinema, Tamil movies, Bollywood, Suriya Sivakumar films, Suriya Sivakumar actor, Suriya Sivakumar best movies, Suriya Sivakumar classics, Tamil film industry, Suriya Sivakumar performances, Indian actors, South Indian cinema, Suriya Sivakumar blockbuster hits, Suriya Sivakumar movies list, Suriya Sivakumar roles, Suriya Sivakumar movie reviews, Suriya Sivakumar popular movies, Suriya Sivakumar award-winning films, Suriya Sivakumar filmography, Suriya Sivakumar action movies, Suriya Sivakumar drama films">
+{% endblock %}
+
+{% block title %}Find Chiyaan Suriya Sivakumar Movies List To Watch{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center">
+<div class="bg-gray-900 max-w-full rounded-md shadow-lg text-white my-8">
+    <div class="px-4 leading-none max-w-4xl">
+
+        <div class="text-gray-300">
+           
+        <h1 class="pt-4 text-2xl font-bold">Find Chiyaan Suriya Sivakumar Movies List To Watch</h1>
+        <hr class="hr-text" data-content="">
+        <div class="text-md flex justify-between px-4 my-2">
+            <span class="font-bold hidden md:block">Popular Movies</span>
+            <span class="font-bold"></span>
+        </div>
+        <p class="hidden md:block px-4 my-4 text-base text-left">
+            Suriya Sivakumar is one of the most versatile and acclaimed actors in Indian cinema, known for his intense performances and dedication to his craft. With a career spanning over two decades, he has delivered unforgettable roles in films across various genres, from action-packed thrillers to emotionally charged dramas. Suriya’s powerful screen presence and ability to connect with the audience have earned him a massive fan following, making him a beloved star in Tamil cinema.
+
+<br>If you're a fan of impactful storytelling and stellar acting, don't miss the chance to watch the latest movies below!
+</p>
+                 
+        <div class="text-xs">
+        
+           <a href='https://www.imdb.com/name/nm1421814/'> <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 mb-4 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">IMDB</button></a>
+        </div>
+                       
+        </div>
+
+    </div>
+</div>
+</div>
+
+    <div class='flex justify-center items-center flex-wrap w-auto'>
+        {% for movie in movies %}
+        <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-30 md:w-60 mx-5 my-10">
+           <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl md:h-30 bg-cover">
+             <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"  alt={{movie.title}} />
+           </div>
+           <div class="px-5 py-2 md:p-6 flex-col gap-2">
+             <h4 class="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 flex-grow">
+               {{ movie.title }}
+             </h4>
+             <p
+               class="block font-sans text-sm antialiased font-medium leading-relaxed bg-clip-text bg-gradient-to-tr from-blue-gray-600 to-blue-gray-400">
+               Rating: {{ movie.average_vote }}
+             </p>
+           </div>
+         </div>
+           {% endfor %}
+           </div>
+
+
+           <div class='flex items-center justify-center'>
+            <div id="alert-border-1" class="flex items-center md:w-1/2 p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800" role="alert">
+                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <div class="ms-3 text-sm font-medium">
+                  If you want to find Kamal Haasan movies to watch, click <a href='{% url "kamal_haasan" %}' class="font-semibold underline hover:no-underline">here</a>.
+                </div>
+               
+            </div></div>
+
+           <section class="flex flex-col items-center my-auto mx-auto bg-[#1c1c1cd6] w-full md:w-3/4 border-t-2 border-x-0 border-solid border-white">
+            <div class="container px-6 py-10 mx-auto">
+                <h2 class="text-xl font-semibold capitalize lg:text-2xl text-yellow-500">What movie should I watch?</h2>
+                
+                <p class="mt-2 text-gray-300 xl:mt-4 dark:text-gray-300">
+                  If you are fan of Suriya Sivakumar, you should definitely watch the following movies. These are the top 20 popular Suriya Sivakumar movies that you should not miss.
+                </p>
+
+                <h2 class="text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Best curated list of Suriya Sivakumar movies</h2>
+                <p class="mt-2 text-gray-300 xl:mt-4 dark:text-gray-300">
+                    <a href='{% url "home" %}' class="font-semibold underline hover:no-underline">TamilYogi VIP</a> has curated a list of the best Suriya Sivakumar movies that you should watch. These movies are picked across all genres and are the best of Suriya Sivakumar.
+
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Best Movie Recommendations</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                  TamilYogi VIP provides the best movie recommendations for Suriya Sivakumar movies. These movies are picked based on the popularity and ratings of Suriya Sivakumar movies.
+
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Where to watch Suriya Sivakumar Movies?</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                  Suriya Sivakumar movies can be found on various streaming platforms, including Netflix, Hulu, Amazon Prime Video, HBO Max, Disney+, Criterion Channel, YouTube, and iTunes. Availability may vary by region, so it's recommended to check the specific platforms in your area to find the movies you're looking for.
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Couldn't find Suriya Sivakumar Movies of your choce?</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                  Visit TamilYogi VIP to find more Suriya Sivakumar movies of your choice. TamilYogi VIP has a vast collection of movies that you can explore and watch. You can also find movies from other genres and actors on TamilYogi VIP.
+                </p>
+
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Which Heroines Chiyaan Suriya Sivakumar has worked with?</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                    Suriya Sivakumar has worked with several leading actresses in the Indian film industry, including Jyothika, Nayanthara, Samantha Ruth Prabhu, Tamannaah Bhatia, and Shruti Haasan. He has shared the screen with these talented actresses in various films, delivering memorable performances and creating on-screen magic. Suriya Sivakumar's chemistry with his co-stars has been appreciated by audiences and critics alike, making his movies a hit at the box office.
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Where the Suriya Sivakumar movies in Hindi dubbed are available?</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                    Suriya Sivakumar movies in Hindi dubbed are available on various streaming platforms, including Netflix, Amazon Prime Video, Disney+, and YouTube. You can also find Suriya Sivakumar movies in Hindi dubbed on DVD and Blu-ray. These movies are popular among Hindi-speaking audiences and have been well-received for their engaging storylines and powerful performances. Suriya Sivakumar's Hindi dubbed movies are known for their action sequences, emotional depth, and strong characterizations.
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">What are the best Trisha and Suriya Sivakumar movies?</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                    Trisha and Suriya Sivakumar have worked together in several hit movies, including "Aaru," "Aaytha Ezhuthu," "Ghajini," and "Mounam Pesiyadhe." These films have showcased the on-screen chemistry between Trisha and Suriya Sivakumar and have been appreciated for their engaging storylines and powerful performances. Trisha and Suriya Sivakumar's movies are known for their action sequences, emotional depth, and strong characterizations, making them a hit with audiences and critics alike.
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Best Suriya Sivakumar movies list in Telugu</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                    Suriya Sivakumar has acted in several Telugu movies, including "Ghajini," "Surya S/o Krishnan," "Rakta Charitra," and "Bandobast." These films have been well-received by Telugu-speaking audiences and have showcased Suriya Sivakumar's versatility as an actor. Suriya Sivakumar's Telugu movies are known for their engaging storylines, powerful performances, and strong characterizations, making them a hit with audiences and critics alike.
+                </p>
+                <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">How many movies Suriya Sivakumar has acted in?</h2>
+                <p class="mt-1 text-gray-300 dark:text-gray-300">
+                    Suriya Sivakumar has acted in over 50 movies in his career, spanning various genres and languages. He made his acting debut in the 1997 film "Nerukku Ner" and has since appeared in numerous hit movies, establishing himself as one of the leading actors in the Indian film industry. Suriya Sivakumar's movies have been well-received by audiences and critics alike, earning him several awards and accolades for his performances.
+                </p>
+                
+                
+            </div>
+        </section>
+
+{% endblock %}

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'movie',
     'tailwind',
     'theme',
-    # 'froala_editor',
+    'froala_editor',
     'django.contrib.sitemaps',
 ]
 

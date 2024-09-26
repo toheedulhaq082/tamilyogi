@@ -1,3 +1,6 @@
+from django.utils.text import slugify
+import random
+import string
 
 
 def drop_decimal_but_first(num):
@@ -16,3 +19,12 @@ def drop_decimal_but_first(num):
         result = num_str
     
     return float(result)
+
+def generate_random_string(N):
+    res = ''.join(random.choices(string.ascii_lowercase + string.digits, k=N))
+    return res
+
+def generate_slug(text):
+    from .models import BlogModel
+    new_slug = slugify(text)
+    return new_slug 
