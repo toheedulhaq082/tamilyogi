@@ -35,6 +35,30 @@ def blog_detail(request, slug):
         print(e)
     return render(request, 'blog_detail.html', context=context)
 
+def anime(request):
+    genre_id = 16  # Genre ID for 'Animation' which often includes anime
+    # api_url = f"https://api.themoviedb.org/3/discover/movie?api_key={TMDB_API_KEY}&with_genres={genre_id}&sort_by=popularity.desc&page=1"
+    api_url = f"https://api.themoviedb.org/3/discover/movie?api_key={TMDB_API_KEY}&with_genres={genre_id}&with_original_language=ja&sort_by=popularity.desc&page=1"
+
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()  # Raise an exception for 4xx/5xx responses
+        data = response.json()
+        movies = data['results']  # Extract the list of anime movies from the response
+        processed_movies = [
+            {
+                'title': movie['title'],
+                'poster_path': movie['poster_path'],  # Poster image for the movie
+                'average_vote': drop_decimal_but_first(movie['vote_average']),  # Format the average vote
+            }
+            for movie in movies
+        ]
+
+        return render(request, 'anime.html', {'movies': processed_movies})  # Render the movies in the template
+    except requests.exceptions.RequestException as e:
+        return render(request, 'anime.html', {'error_message': str(e)})  # Render an error message in the template
+    
+
 def Kamal(request):
     actor_id = 93193
     api_url = f"https://api.themoviedb.org/3/discover/movie?api_key={TMDB_API_KEY}&with_people={actor_id}&sort_by=popularity.desc&page=1"

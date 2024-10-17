@@ -7,6 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
+    path('anime-tamil-dubbed', views.anime, name='anime'),
     path('kamal-haasan', views.Kamal, name='kamal_haasan'),
     path('vikram', views.vikram, name='vikram'),
     path('dhanush', views.dhanush, name='dhanush'),
