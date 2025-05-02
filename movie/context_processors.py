@@ -3,21 +3,21 @@ from django.conf import settings
 def genres_processor(request):
     # List of genres with corresponding TMDb IDs
     genre_data = [
-        {'id': 28, 'name': 'Action'},
-        {'id': 53, 'name': 'Thriller'},
-        {'id': 80, 'name': 'Crime'},
-        {'id': 18, 'name': 'Drama'},
-        {'id': 10749, 'name': 'Romance'},
-        {'id': 35, 'name': 'Comedy'},
-        {'id': 12, 'name': 'Adventure'},
-        {'id': 16, 'name': 'Animation'},
-        {'id': 10751, 'name': 'Family'},
-        {'id': 14, 'name': 'Fantasy'},
-        {'id': 36, 'name': 'History'},
-        {'id': 27, 'name': 'Horror'},
-        {'id': 10402, 'name': 'Music'},
-        {'id': 9648, 'name': 'Mystery'},
-        {'id': 878, 'name': 'Science-Fiction'},
-        {'id': 10752, 'name': 'War'}
+        {'id': 28, 'name': 'action'},
+        {'id': 53, 'name': 'thriller'},
+        {'id': 80, 'name': 'crime'},
+        {'id': 18, 'name': 'drama'},
+        {'id': 10749, 'name': 'romance'},
+        {'id': 35, 'name': 'comedy'},
+        {'id': 12, 'name': 'adventure'},
+        {'id': 16, 'name': 'animation'},
+        {'id': 10751, 'name': 'family'},
+        {'id': 14, 'name': 'fantasy'},
+        {'id': 36, 'name': 'history'},
+        {'id': 27, 'name': 'horror'},
+        {'id': 10402, 'name': 'music'},
+        {'id': 9648, 'name': 'mystery'},
+        {'id': 878, 'name': 'science-fiction'},
+        {'id': 10752, 'name': 'war'}
     ]
     return {'genres': genre_data}
