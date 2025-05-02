@@ -7,6 +7,7 @@ from .models import BlogModel
 from django.views.generic import TemplateView
 from django.http import Http404
 from django.utils.text import slugify
+from django.http import HttpResponse
 
 
 load_dotenv()
@@ -15,6 +16,13 @@ TMDB_API_KEY = os.environ.get("TMDB_SECRET_KEY")
 
 # Create your views here.
 
+def robots_txt(request):
+    lines = [
+        "User-Agent: *",
+        "Disallow:",
+        "Sitemap: https://tamilyogi.moviechoose.com/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
