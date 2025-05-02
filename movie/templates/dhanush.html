@@ -40,6 +40,7 @@
 
     <div class='flex justify-center items-center flex-wrap w-auto'>
         {% for movie in movies %}
+        <a href="{% url 'movie_detail' movie.id movie.slug %}" class="no-underline">
         <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-30 md:w-60 mx-5 my-10">
            <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl md:h-30 bg-cover">
              <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"  alt={{movie.title}} />
@@ -54,6 +55,7 @@
              </p>
            </div>
          </div>
+         <a/>
            {% endfor %}
            </div>
 

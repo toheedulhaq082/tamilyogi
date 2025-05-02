@@ -20,11 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.sitemaps.views import sitemap
-from movie.sitemaps import MovieSitemap, BlogSitemap
+from movie.sitemaps import MovieSitemap
 
 sitemaps = {
-    'movie': MovieSitemap,
-    'blog': BlogSitemap,    
+    'movie': MovieSitemap,   
 }
 
 

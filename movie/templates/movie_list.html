@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+<meta name="description" content="Explore the top movies in the {{ genre }} genre. From iconic classics to modern hits, discover the best films in {{ genre }} for your next movie marathon.">
+<meta name="keywords" content="{{ genre }}, movies, film recommendations, top {{ genre }} movies, best {{ genre }} films, {{ genre }} movie list, top-rated {{ genre }} films, {{ genre }} cinema, movie suggestions">
+{% endblock %}
+
+{% block title %}Find Top Tamil {{ genre }} Movies To Watch{% endblock %}
+
+{% block content %}
+
+<div class="flex justify-center">
+  <div class="bg-gray-900 max-w-full rounded-md shadow-lg text-white my-8">
+    <div class="px-4 leading-none max-w-4xl">
+
+      <div class="text-gray-300">
+        <h1 class="pt-4 text-2xl font-bold">Find Top Tamil {{ genre }} Movies To Watch</h1>
+        <hr class="hr-text" data-content="">
+        <div class="text-md flex justify-between px-4 my-2">
+          <span class="font-bold hidden md:block">Popular Tamil Movies in {{ genre }}</span>
+        </div>
+        <p class="hidden md:block px-4 my-4 text-base text-left">
+          If you're a fan of the {{ genre }} genre, you're in the right place! Explore some of the best movies from this genre, from timeless classics to the latest hits. Get ready for an unforgettable movie-watching experience.
+        </p>
+                 
+        <div class="text-xs">
+          <a href='https://www.imdb.com/genre/{{ genre }}' target="_blank"> 
+            <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 mb-4 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">IMDB</button>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-center items-center flex-wrap w-auto">
+    {% for movie in movies %}
+      <a href="{% url 'movie_detail' id=movie.id slug=movie.title|slugify %}" class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-30 md:w-60 mx-5 my-10">
+        <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl md:h-30 bg-cover">
+          <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" />
+        </div>
+        <div class="px-5 py-2 md:p-6 flex-col gap-2">
+          <h4 class="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 flex-grow">
+            {{ movie.title }}
+          </h4>
+          <p class="block font-sans text-sm antialiased font-medium leading-relaxed bg-clip-text bg-gradient-to-tr from-blue-gray-600 to-blue-gray-400">
+            Rating: {{ movie.average_vote }}
+          </p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>  
+
+<div class="flex items-center justify-center">
+  <div id="alert-border-1" class="flex items-center md:w-1/2 p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800" role="alert">
+    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+    </svg>
+    {% comment %} <div class="ms-3 text-sm font-medium">
+      If you want to explore other genres, click <a href='{% url "genre_list" %}' class="font-semibold underline hover:no-underline">here</a>.
+    </div> {% endcomment %}
+  </div>
+</div>
+
+<section class="flex flex-col items-center my-auto mx-auto bg-[#1c1c1cd6] w-full md:w-3/4 border-t-2 border-x-0 border-solid border-white">
+  <div class="container px-6 py-10 mx-auto">
+    <h2 class="text-xl font-semibold capitalize lg:text-2xl text-yellow-500">What genre should I watch next?</h2>
+    
+    <p class="mt-2 text-gray-300 xl:mt-4 dark:text-gray-300">
+      If you're a fan of {{ genre }} movies, explore the top picks below. These films are hand-picked based on their popularity and high ratings, ensuring you have a great time.
+    </p>
+
+    <h2 class="text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Best curated list of {{ genre }} movies</h2>
+    <p class="mt-2 text-gray-300 xl:mt-4 dark:text-gray-300">
+      We have curated a list of the best {{ genre }} movies that you should watch. Whether you're looking for something thrilling, emotional, or thought-provoking, we have something for everyone.
+    </p>
+
+    <h2 class="mt-4 text-xl font-semibold capitalize lg:text-2xl text-yellow-500">Where to watch {{ genre }} movies?</h2>
+    <p class="mt-1 text-gray-300 dark:text-gray-300">
+      {{ genre }} movies can be found on streaming platforms like Netflix, Amazon Prime Video, Hulu, and others. Be sure to check the availability in your region for the best viewing experience.
+    </p>
+
+  </div>
+</section>
+
+{% endblock %}

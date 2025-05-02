@@ -27,7 +27,9 @@ urlpatterns = [
     # path('rana_daggubati', views.rana_daggubati, name='Rana_Daggubati'),
     # path('nani', views.nani, name='Nani'),
     # path('vijay_deverakonda', views.vijay_deverakonda, name='Vijay_Deverakonda'),
-    path('<slug>', views.blog_detail, name='blog_detail'),
+    # path('<slug>', views.blog_detail, name='blog_detail'),
+    path('<str:genre>/', views.movie_list, name='movie_list'),
+    path('movie/<int:id>/<slug:slug>/', views.movie_detail, name='movie_detail'),
 ]
 
 if settings.DEBUG:

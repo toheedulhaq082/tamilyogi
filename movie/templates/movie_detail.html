@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block meta %}
+<meta name="description" content="{{ movie.title }} is a must-watch film. Explore its cast, story, streaming platforms, and more. Find out why {{ movie.title }} is loved by audiences.">
+<meta name="keywords" content="{{ movie.title }}, {{ movie.title }} movie, {{ movie.title }} cast, where to watch {{ movie.title }}, {{ movie.title }} review, {{ movie.title }} trailer">
+{% endblock %}
+
+{% block title %}Tamil {{ title }} Movie - Watch, Download Online{% endblock %}
+
+{% block content %}
+<section class="bg-gray-900 text-white p-6 rounded-lg shadow-lg">
+<div class="relative text-white">
+    <!-- Background Image with Overlay -->
+  
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 md:flex md:items-start md:gap-10">
+      <!-- Poster -->
+      <div class="w-full md:w-1/3 mb-10 md:mb-0">
+        <img src="https://image.tmdb.org/t/p/w500{{ poster_path }}" alt="{{ title }}" class="rounded-xl shadow-lg">
+      </div>
+  
+      <!-- Info -->
+      <div class="md:w-2/3">
+        <h1 class="text-4xl font-bold mb-4">{{ title }}</h1>
+  
+        <!-- Genres -->
+        <div class="flex flex-wrap gap-3 mb-6">
+            {% for genre in genres %}
+            <a href="{% url 'movie_list' genre.name|slugify %}">
+                <span class="bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                    {{ genre.name }}
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+        
+        
+          
+  
+        <!-- Overview -->
+        <p class="text-lg text-gray-200 mb-8 max-w-3xl">{{ overview }}</p>
+  
+        <!-- Cast -->
+        {% if credits.cast %}
+        <h2 class="text-2xl font-semibold mb-4">Casts</h2>
+        <div class="flex gap-4 overflow-x-auto pb-2">
+          {% for cast in credits.cast|slice:":6" %}
+            <div class="w-24 text-center">
+              {% if cast.profile_path %}
+                <img src="https://image.tmdb.org/t/p/w185{{ cast.profile_path }}" class="rounded-full w-20 h-20 object-cover mx-auto mb-2">
+              {% else %}
+                <div class="w-20 h-20 rounded-full bg-gray-600 mx-auto mb-2"></div>
+              {% endif %}
+              <p class="text-sm font-semibold text-white">{{ cast.name }}</p>
+              <p class="text-xs text-gray-400">{{ cast.character }}</p>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+  <h2 class="text-2xl font-semibold mt-12 mb-4 text-gray flex flex-col items-center">Tamil {{ title }} Movie | Watch or Download</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+  <!-- Netflix -->
+  <a href="https://www.netflix.com/" target="_blank" class="bg-white/10 hover:bg-white/20 transition p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="h-10 mb-3">
+    <p class="text-lg font-semibold text-gray">Netflix</p>
+    <p class="text-sm text-gray-600">Watch online or download</p>
+  </a>
+
+  <!-- Prime Video -->
+  <a href="https://www.primevideo.com/" target="_blank" class="bg-white/10 hover:bg-white/20 transition p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" alt="Prime Video" class="h-10 mb-3">
+    <p class="text-lg font-semibold text-gray">Prime Video</p>
+    <p class="text-sm text-gray-600">Stream in HD or offline</p>
+  </a>
+
+  <!-- Aha -->
+  <a href="https://www.aha.video/" target="_blank" class="bg-white/10 hover:bg-white/20 transition p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Aha_OTT_Logo.png" alt="Aha" class="h-10 mb-3">
+    <p class="text-lg font-semibold text-gray">Aha</p>
+    <p class="text-sm text-gray-600">Telugu & Tamil streaming</p>
+  </a>
+
+  <!-- Sony Liv -->
+  <a href="https://www.sonyliv.com/" target="_blank" class="bg-white/10 hover:bg-white/20 transition p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Sony_LIV_logo_2020.svg" alt="Sony Liv" class="h-10 mb-3">
+    <p class="text-lg font-semibold text-gray">Sony Liv</p>
+    <p class="text-sm text-gray-600">Watch series & movies</p>
+  </a>
+
+  <!-- Zee5 -->
+  <a href="https://www.zee5.com/" target="_blank" class="bg-white/10 hover:bg-white/20 transition p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/ZEE5_logo.svg" alt="Zee5" class="h-10 mb-3">
+    <p class="text-lg font-semibold text-gray">Zee5</p>
+    <p class="text-sm text-gray-600">Watch in multiple languages</p>
+  </a>
+
+  <!-- Disney+ Hotstar -->
+  <a href="https://www.hotstar.com/" target="_blank" class="bg-gray-500 transition p-4 rounded-xl shadow-lg flex flex-col items-center text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Disney%2B_Hotstar_logo.svg" alt="Disney+ Hotstar" class="h-10 mb-3">
+    <p class="text-lg font-semibold text-gray">Disney+ Hotstar</p>
+    <p class="text-sm text-gray-600">Premium content & downloads</p>
+  </a>
+</div>
+
+
+{% endblock %}

@@ -1,6 +1,12 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from .models import BlogModel
+from dotenv import load_dotenv
+import os
+from .action_movies import action_movies
+
+load_dotenv()
+
+TMDB_API_KEY = os.environ.get("TMDB_SECRET_KEY")
 
 class MovieSitemap(Sitemap):
     changefreq = 'weekly'
@@ -8,18 +14,47 @@ class MovieSitemap(Sitemap):
     protocol = 'https'
 
     def items(self):
-        return ['home', 'kamal_haasan', 'dhanush', 'vikram', 'vijay-sethupathi', 'suriya_sivakumar', 'anime'] 
+        static_urls = [
+            ('static', 'home'),
+            ('static', 'kamal_haasan'),
+            ('static', 'dhanush'),
+            ('static', 'vikram'),
+            ('static', 'vijay-sethupathi'),
+            ('static', 'suriya_sivakumar'),
+            ('static', 'anime'),
+        ]
+
+        genres = ['action',
+    'adventure',
+    'animation',
+    'comedy',
+    'crime',
+    'documentary',
+    'drama',
+    'family',
+    'fantasy',
+    'history',
+    'horror',
+    'music',
+    'mystery',
+    'romance',
+    'science-fiction',
+    'tv-movie',
+    'thriller',
+    'war'
+    ]
+        genre_urls = [('genre', genre) for genre in genres]
+
+        movie_urls = [('movie', movie['tmdb_id'], movie['slug']) for movie in action_movies]
+
+        return static_urls + genre_urls + movie_urls
 
     def location(self, item):
-        return reverse(item)
-    
-class BlogSitemap(Sitemap):
-    changefreq = 'daily'
-    priority = 0.9
-    protocol = 'https'
+        type_ = item[0]
 
-    def items(self):
-        return BlogModel.objects.all()
-
-    def lastmod(self, obj):
-        return obj.updated_at
+        if type_ == 'static':
+            return reverse(item[1])
+        elif type_ == 'genre':
+            return reverse('movie_list', kwargs={'genre': item[1]})
+        elif type_ == 'movie':
+            return reverse('movie_detail', kwargs={'id': item[1], 'slug': item[2]})
