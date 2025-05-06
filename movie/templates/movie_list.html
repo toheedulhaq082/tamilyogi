@@ -27,6 +27,9 @@
           <a href='https://www.imdb.com/genre/{{ genre }}' target="_blank"> 
             <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 mb-4 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">IMDB</button>
           </a>
+          <a href="{% url 'home' %}" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 mb-4 transition duration-500 ease select-none hover:bg-gray-900 focus:outline-none focus:shadow-outline">
+            ← Back to Home
+          </a>
         </div>
 
       </div>
@@ -37,12 +40,12 @@
 
 <div class="flex justify-center items-center flex-wrap w-auto">
     {% for movie in movies %}
-      <a href="{% url 'movie_detail' id=movie.id slug=movie.title|slugify %}" class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-30 md:w-60 mx-5 my-10">
+      <a href="{% url 'movie_detail' genre=genre id=movie.id slug=movie.title|slugify %}" class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-30 md:w-60 mx-5 my-10">
         <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg rounded-xl md:h-30 bg-cover">
           <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" />
         </div>
         <div class="px-5 py-2 md:p-6 flex-col gap-2">
-          <h4 class="block mb-2 font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 flex-grow">
+          <h4 class="block mb-2 font-sans text-base md:text-lg font-semibold leading-snug tracking-normal text-blue-gray-900 truncate">
             {{ movie.title }}
           </h4>
           <p class="block font-sans text-sm antialiased font-medium leading-relaxed bg-clip-text bg-gradient-to-tr from-blue-gray-600 to-blue-gray-400">
@@ -53,16 +56,18 @@
     {% endfor %}
   </div>  
 
-<div class="flex items-center justify-center">
-  <div id="alert-border-1" class="flex items-center md:w-1/2 p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800" role="alert">
-    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-    </svg>
-    {% comment %} <div class="ms-3 text-sm font-medium">
-      If you want to explore other genres, click <a href='{% url "genre_list" %}' class="font-semibold underline hover:no-underline">here</a>.
-    </div> {% endcomment %}
+  <div class="flex items-center justify-center">
+    <div id="alert-border-1" class="flex items-center md:w-1/2 p-4 mb-4 text-blue-800 border-t-4 border-blue-300 bg-blue-50 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800" role="alert">
+      <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+      </svg>
+      <div class="ms-3 text-sm font-medium">
+        Looking for more? Explore the next genre <strong>{{ next_genre }}</strong> 
+        <a href="{% url 'movie_list' next_genre_key %}" class="font-semibold underline hover:no-underline">here</a>.
+      </div>
+    </div>
   </div>
-</div>
+  
 
 <section class="flex flex-col items-center my-auto mx-auto bg-[#1c1c1cd6] w-full md:w-3/4 border-t-2 border-x-0 border-solid border-white">
   <div class="container px-6 py-10 mx-auto">

@@ -29,7 +29,7 @@ urlpatterns = [
     # path('vijay_deverakonda', views.vijay_deverakonda, name='Vijay_Deverakonda'),
     # path('<slug>', views.blog_detail, name='blog_detail'),
     path('<str:genre>/', views.movie_list, name='movie_list'),
-    path('movie/<int:id>/<slug:slug>/', views.movie_detail, name='movie_detail'),
+    path('<str:genre>/movie/<int:id>/<slug:slug>', views.movie_detail, name='movie_detail'),
 ]
 
 if settings.DEBUG:

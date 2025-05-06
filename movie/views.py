@@ -14,6 +14,26 @@ load_dotenv()
 
 TMDB_API_KEY = os.environ.get("TMDB_SECRET_KEY")
 
+GENRE_MAP = {
+    28: 'Action',
+    80: 'Crime',
+    18: 'Drama',
+    53: 'Thriller',
+    12: 'Adventure',
+    16: 'Animation',
+    35: 'Comedy',
+    14: 'Fantasy',
+    27: 'Horror',
+    36: 'History',
+    10402: 'Music',
+    99: 'Documentary',
+    878: 'Science Fiction',
+    10751: 'Family',
+    10749: 'Romance',
+    10752: 'War',
+    37: 'Western'
+}
+
 # Create your views here.
 
 def robots_txt(request):
@@ -37,7 +57,7 @@ class HomePageView(TemplateView):
             'api_key': api_key,
             'with_original_language': 'ta',
             'sort_by': 'vote_average.desc',
-            'vote_count.gte': 100,  # filters out movies with very few votes
+            'vote_count.gte': 100, 
         }
 
         try:
@@ -48,7 +68,7 @@ class HomePageView(TemplateView):
         except requests.exceptions.RequestException as e:
             context['movies'] = []
             context['error'] = str(e)
-
+        
         return context
     
 
@@ -95,20 +115,28 @@ def Kamal(request):
         response.raise_for_status()  
         data = response.json()
         movies = data['results']  
-        processed_movies = [
-            {
+        
+        processed_movies = []
+
+        for movie in movies:
+            # Extract the first genre ID
+            first_genre_id = movie.get('genre_ids', [])[0] if movie.get('genre_ids') else None
+
+            # Get the genre name using the GENRE_MAP (or another API call if you prefer)
+            first_genre_name = GENRE_MAP.get(first_genre_id, 'Unknown Genre')
+
+            processed_movies.append({
                 'id': movie['id'],
                 'title': movie['title'],
                 'slug': slugify(movie['title']),
                 'poster_path': movie['poster_path'],
                 'average_vote': drop_decimal_but_first(movie['vote_average']),
-            }
-            for movie in movies
-        ]
+                'genre': first_genre_name,  # Add the genre name here
+            })
 
-        return render(request, 'vikram.html', {'movies': processed_movies})
+        return render(request, 'Kamal.html', {'movies': processed_movies})
     except requests.exceptions.RequestException as e:
-        return render(request, 'vikram.html', {'error_message': str(e)})
+        return render(request, 'Kamal.html', {'error_message': str(e)})
     
 def dhanush(request):
     actor_id = 550165
@@ -119,20 +147,28 @@ def dhanush(request):
         response.raise_for_status()  
         data = response.json()
         movies = data['results']  
-        processed_movies = [
-            {
+        
+        processed_movies = []
+
+        for movie in movies:
+            # Extract the first genre ID
+            first_genre_id = movie.get('genre_ids', [])[0] if movie.get('genre_ids') else None
+
+            # Get the genre name using the GENRE_MAP (or another API call if you prefer)
+            first_genre_name = GENRE_MAP.get(first_genre_id, 'Unknown Genre')
+
+            processed_movies.append({
                 'id': movie['id'],
                 'title': movie['title'],
                 'slug': slugify(movie['title']),
                 'poster_path': movie['poster_path'],
                 'average_vote': drop_decimal_but_first(movie['vote_average']),
-            }
-            for movie in movies
-        ]
+                'genre': first_genre_name,  # Add the genre name here
+            })
 
-        return render(request, 'vikram.html', {'movies': processed_movies})
+        return render(request, 'dhanush.html', {'movies': processed_movies})
     except requests.exceptions.RequestException as e:
-        return render(request, 'vikram.html', {'error_message': str(e)})
+        return render(request, 'dhanush.html', {'error_message': str(e)})
     
 def vikram(request):
     actor_id = 93191
@@ -143,18 +179,27 @@ def vikram(request):
         response.raise_for_status()  
         data = response.json()
         movies = data['results']  
-        processed_movies = [
-            {
+        
+        processed_movies = []
+
+        for movie in movies:
+            # Extract the first genre ID
+            first_genre_id = movie.get('genre_ids', [])[0] if movie.get('genre_ids') else None
+
+            # Get the genre name using the GENRE_MAP (or another API call if you prefer)
+            first_genre_name = GENRE_MAP.get(first_genre_id, 'Unknown Genre')
+
+            processed_movies.append({
                 'id': movie['id'],
                 'title': movie['title'],
                 'slug': slugify(movie['title']),
                 'poster_path': movie['poster_path'],
                 'average_vote': drop_decimal_but_first(movie['vote_average']),
-            }
-            for movie in movies
-        ]
+                'genre': first_genre_name,  # Add the genre name here
+            })
 
         return render(request, 'vikram.html', {'movies': processed_movies})
+
     except requests.exceptions.RequestException as e:
         return render(request, 'vikram.html', {'error_message': str(e)})
     
@@ -167,20 +212,28 @@ def vijay_sethupathi(request):
         response.raise_for_status()  
         data = response.json()
         movies = data['results']  
-        processed_movies = [
-            {
+        
+        processed_movies = []
+
+        for movie in movies:
+            # Extract the first genre ID
+            first_genre_id = movie.get('genre_ids', [])[0] if movie.get('genre_ids') else None
+
+            # Get the genre name using the GENRE_MAP (or another API call if you prefer)
+            first_genre_name = GENRE_MAP.get(first_genre_id, 'Unknown Genre')
+
+            processed_movies.append({
                 'id': movie['id'],
                 'title': movie['title'],
                 'slug': slugify(movie['title']),
                 'poster_path': movie['poster_path'],
                 'average_vote': drop_decimal_but_first(movie['vote_average']),
-            }
-            for movie in movies
-        ]
+                'genre': first_genre_name,  # Add the genre name here
+            })
 
-        return render(request, 'vikram.html', {'movies': processed_movies})
+        return render(request, 'vijaysethupathi.html', {'movies': processed_movies})
     except requests.exceptions.RequestException as e:
-        return render(request, 'vikram.html', {'error_message': str(e)})
+        return render(request, 'vijaysethupathi.html', {'error_message': str(e)})
     
 def suriya(request):
     actor_id = 85720
@@ -191,92 +244,136 @@ def suriya(request):
         response.raise_for_status()  
         data = response.json()
         movies = data['results']  
-        processed_movies = [
-            {
+        
+        processed_movies = []
+
+        for movie in movies:
+            # Extract the first genre ID
+            first_genre_id = movie.get('genre_ids', [])[0] if movie.get('genre_ids') else None
+
+            # Get the genre name using the GENRE_MAP (or another API call if you prefer)
+            first_genre_name = GENRE_MAP.get(first_genre_id, 'Unknown Genre')
+
+            processed_movies.append({
                 'id': movie['id'],
                 'title': movie['title'],
                 'slug': slugify(movie['title']),
                 'poster_path': movie['poster_path'],
                 'average_vote': drop_decimal_but_first(movie['vote_average']),
-            }
-            for movie in movies
-        ]
+                'genre': first_genre_name,  # Add the genre name here
+            })
 
-        return render(request, 'vikram.html', {'movies': processed_movies})
+        return render(request, 'suryasiva.html', {'movies': processed_movies})
     except requests.exceptions.RequestException as e:
-        return render(request, 'vikram.html', {'error_message': str(e)})
+        return render(request, 'suryasiva.html', {'error_message': str(e)})
     
 def movie_list(request, genre):
-    """Fetch movies based on the genre passed in the URL."""
+    """Fetch movies based on the genre passed in the URL and provide next genre for navigation."""
     genre_ids = {
         'action': 28,
-    'adventure': 12,
-    'animation': 16,
-    'comedy': 35,
-    'crime': 80,
-    'documentary': 99,
-    'drama': 18,
-    'family': 10751,
-    'fantasy': 14,
-    'history': 36,
-    'horror': 27,
-    'music': 10402,
-    'mystery': 9648,
-    'romance': 10749,
-    'science-fiction': 878,
-    'tv-movie': 10770,
-    'thriller': 53,
-    'war': 10752
-        
+        'adventure': 12,
+        'animation': 16,
+        'comedy': 35,
+        'crime': 80,
+        'documentary': 99,
+        'drama': 18,
+        'family': 10751,
+        'fantasy': 14,
+        'history': 36,
+        'horror': 27,
+        'music': 10402,
+        'mystery': 9648,
+        'romance': 10749,
+        'science-fiction': 878,
+        'tv-movie': 10770,
+        'thriller': 53,
+        'war': 10752
     }
 
-    genre_id = genre_ids.get(genre.lower())
+    genre_keys = list(genre_ids.keys())
+
+    genre_key = genre.lower()
+    genre_id = genre_ids.get(genre_key)
 
     if not genre_id:
         return render(request, 'error.html', {'error_message': 'Invalid genre or genre not found.'})
 
-    # Fetch movies from TMDb API
+    # Determine next genre
+    current_index = genre_keys.index(genre_key)
+    next_index = (current_index + 1) % len(genre_keys)
+    next_genre_key = genre_keys[next_index]
+    next_genre_name = next_genre_key.capitalize()
+
     api_url = (
-    f"https://api.themoviedb.org/3/discover/movie?"
-    f"api_key={TMDB_API_KEY}&with_genres={genre_id}"
-    f"&sort_by=popularity.desc&page=1&with_original_language=ta"
-)
+        f"https://api.themoviedb.org/3/discover/movie?"
+        f"api_key={TMDB_API_KEY}&with_genres={genre_id}"
+        f"&sort_by=popularity.desc&page=1&with_original_language=ta"
+    )
 
     try:
         response = requests.get(api_url)
-        response.raise_for_status()  # Raise an exception for 4xx/5xx responses
+        response.raise_for_status()
         data = response.json()
-        movies = data['results']  # Extract the list of movies from the response
-        
-        # Process movie data
-        processed_movies = [
-    {
-        'id': movie['id'],  # Add this
-        'title': movie['title'],
-        'poster_path': movie['poster_path'],
-        'average_vote': drop_decimal_but_first(movie['vote_average']),
-    }
-    for movie in movies
-]
-        genre = genre.capitalize()
-        
-        # Render the movie list template
-        return render(request, 'movie_list.html', {'movies': processed_movies, 'genre': genre})
-    
-    except requests.exceptions.RequestException as e:
-        # Handle API request error
-        return render(request, 'error.html', {'error_message': str(e)})
-    
-def movie_detail(request, id, slug):
-    api_key = TMDB_API_KEY
-    tmdb_url = f"https://api.themoviedb.org/3/movie/{id}?api_key={api_key}&append_to_response=credits"
+        movies = data['results']
 
+        processed_movies = [
+            {
+                'id': movie['id'],
+                'title': movie['title'],
+                'poster_path': movie['poster_path'],
+                'average_vote': drop_decimal_but_first(movie['vote_average']),
+            }
+            for movie in movies
+        ]
+        
+        return render(
+            request,
+            'movie_list.html',
+            {
+                'movies': processed_movies,
+                'genre': genre_key,
+                'next_genre': next_genre_name,
+                'next_genre_key': next_genre_key,
+            }
+        )
+
+    except requests.exceptions.RequestException as e:
+        return render(request, 'error.html', {'error_message': str(e)})
+   
+def movie_detail(request, genre, id, slug):
+    api_key = TMDB_API_KEY
+
+    # Fetch movie details
+    tmdb_url = f"https://api.themoviedb.org/3/movie/{id}?api_key={api_key}&append_to_response=credits"
     response = requests.get(tmdb_url)
     if response.status_code != 200:
         raise Http404("Movie not found.")
 
     movie = response.json()
 
+    # Fetch genre list to map genre name to ID
+    genre_url = f"https://api.themoviedb.org/3/genre/movie/list?api_key={api_key}&language=en-US"
+    genre_response = requests.get(genre_url)
+    if genre_response.status_code != 200:
+        raise Http404("Genre list could not be fetched.")
+
+    genre_list = genre_response.json().get('genres', [])
+    genre_id = next((g['id'] for g in genre_list if g['name'].lower() == genre.lower()), None)
+
+    similar_movies = []
+    if genre_id:
+        # Fetch movies by genre
+        genre_movies_url = (
+        f"https://api.themoviedb.org/3/discover/movie?"
+        f"api_key={TMDB_API_KEY}&with_genres={genre_id}"
+        f"&sort_by=popularity.desc&page=1&with_original_language=ta"
+    )
+        genre_movies_response = requests.get(genre_movies_url)
+        if genre_movies_response.status_code == 200:
+            all_genre_movies = genre_movies_response.json().get('results', [])
+            # Exclude the current movie and pick top 5
+            similar_movies = [m for m in all_genre_movies if m['id'] != id][:5]
+    
     context = {
         'title': movie.get('title'),
         'poster_path': movie.get('poster_path'),
@@ -289,5 +386,8 @@ def movie_detail(request, id, slug):
         'status': movie.get('status'),
         'language': movie.get('original_language'),
         'credits': movie.get('credits', {}),
+        'similar_movies': similar_movies,
+        'selected_genre': genre,
     }
+
     return render(request, 'movie_detail.html', context)

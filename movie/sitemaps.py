@@ -2,7 +2,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from dotenv import load_dotenv
 import os
-from .action_movies import action_movies
+from .movies_lists import action_movies
 
 load_dotenv()
 
@@ -24,28 +24,15 @@ class MovieSitemap(Sitemap):
             ('static', 'anime'),
         ]
 
-        genres = ['action',
-    'adventure',
-    'animation',
-    'comedy',
-    'crime',
-    'documentary',
-    'drama',
-    'family',
-    'fantasy',
-    'history',
-    'horror',
-    'music',
-    'mystery',
-    'romance',
-    'science-fiction',
-    'tv-movie',
-    'thriller',
-    'war'
-    ]
+        genres = [
+            'action', 'adventure', 'animation', 'comedy', 'crime', 'documentary',
+            'drama', 'family', 'fantasy', 'history', 'horror', 'music', 'mystery',
+            'romance', 'science-fiction', 'tv-movie', 'thriller', 'war'
+        ]
         genre_urls = [('genre', genre) for genre in genres]
 
-        movie_urls = [('movie', movie['tmdb_id'], movie['slug']) for movie in action_movies]
+        # Assuming all movies in action_movies belong to 'action' genre
+        movie_urls = [('movie', 'action', movie['id'], movie['slug']) for movie in action_movies]
 
         return static_urls + genre_urls + movie_urls
 
@@ -57,4 +44,4 @@ class MovieSitemap(Sitemap):
         elif type_ == 'genre':
             return reverse('movie_list', kwargs={'genre': item[1]})
         elif type_ == 'movie':
-            return reverse('movie_detail', kwargs={'id': item[1], 'slug': item[2]})
+            return reverse('movie_detail', kwargs={'genre': item[1], 'id': item[2], 'slug': item[3]})
