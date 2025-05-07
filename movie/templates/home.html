@@ -20,6 +20,108 @@ Find Online HD Tamil Movies To Watch And Download
   </div>
 </section>
 
+<section>
+  <h2 class="text-2xl font-semibold mb-4">Action Movies</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+    {% for movie in action_movies|slice:":5" %}
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
+        <a href="{% url 'movie_detail' genre='action' id=movie.id slug=movie.title|slugify %}" class="block">
+          <!-- Compact view for small screens (mobile) -->
+          <div class="text-center sm:text-left">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ movie.title }}</h3>
+            <p class="text-sm text-gray-500">ID: {{ movie.id }}</p>
+          </div>
+
+          <!-- Detailed view for larger screens -->
+          <div class="sm:hidden lg:block mt-2">
+            <p class="text-sm text-gray-600">{{ movie.description|truncatewords:15 }}</p> <!-- Truncated description for larger screens -->
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2 class="text-2xl font-semibold mb-4 mt-8">Thriller Movies</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+    {% for movie in thriller_movies|slice:":5" %}
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
+        <a href="{% url 'movie_detail' genre='thriller' id=movie.id slug=movie.title|slugify %}" class="block">
+          <!-- Compact view for small screens (mobile) -->
+          <div class="text-center sm:text-left">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ movie.title }}</h3>
+            <p class="text-sm text-gray-500">ID: {{ movie.id }}</p>
+          </div>
+
+          <!-- Detailed view for larger screens -->
+          <div class="sm:hidden lg:block mt-2">
+            <p class="text-sm text-gray-600">{{ movie.description|truncatewords:15 }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2 class="text-2xl font-semibold mb-4 mt-8">Crime Movies</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+    {% for movie in crime_movies|slice:":5" %}
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
+        <a href="{% url 'movie_detail' genre='crime' id=movie.id slug=movie.title|slugify %}" class="block">
+          <!-- Compact view for small screens (mobile) -->
+          <div class="text-center sm:text-left">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ movie.title }}</h3>
+            <p class="text-sm text-gray-500">ID: {{ movie.id }}</p>
+          </div>
+
+          <!-- Detailed view for larger screens -->
+          <div class="sm:hidden lg:block mt-2">
+            <p class="text-sm text-gray-600">{{ movie.description|truncatewords:15 }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2 class="text-2xl font-semibold mb-4 mt-8">Drama Movies</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+    {% for movie in drama_movies|slice:":5" %}
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
+        <a href="{% url 'movie_detail' genre='drama' id=movie.id slug=movie.title|slugify %}" class="block">
+          <!-- Compact view for small screens (mobile) -->
+          <div class="text-center sm:text-left">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ movie.title }}</h3>
+            <p class="text-sm text-gray-500">ID: {{ movie.id }}</p>
+          </div>
+
+          <!-- Detailed view for larger screens -->
+          <div class="sm:hidden lg:block mt-2">
+            <p class="text-sm text-gray-600">{{ movie.description|truncatewords:15 }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2 class="text-2xl font-semibold mb-4 mt-8">Romance Movies</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
+    {% for movie in romance_movies|slice:":5" %}
+      <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
+        <a href="{% url 'movie_detail' genre='romance' id=movie.id slug=movie.title|slugify %}" class="block">
+          <!-- Compact view for small screens (mobile) -->
+          <div class="text-center sm:text-left">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ movie.title }}</h3>
+            <p class="text-sm text-gray-500">ID: {{ movie.id }}</p>
+          </div>
+
+          <!-- Detailed view for larger screens -->
+          <div class="sm:hidden lg:block mt-2">
+            <p class="text-sm text-gray-600">{{ movie.description|truncatewords:15 }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
 
 
   {% comment %} <div class="w-full">
@@ -53,7 +155,7 @@ Find Online HD Tamil Movies To Watch And Download
   <div class="py-15 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 py-6 lg:py-8 lg:px-8 bg-[#1c1c1cd6] md:rounded-2xl border-y-2 border-x-0 border-solid md:border-2 border-white">
       <div class="mx-auto max-w-2xl lg:text-center">
-        <h2 class="text-base font-semibold leading-7 text-cyan-600">We partner with the best OTT platforms</h2>
+        <h2 class="text-base font-semibold leading-7 text-blue-400">We partner with the best OTT platforms</h2>
         <p class="mt-2 text-3xl font-bold tracking-tight text-yellow-500 sm:text-4xl">Stream top-rated movies with our trusted partners</p>
         <p class="mt-6 text-lg leading-8 text-slate-300">Watch HD movies via Netflix, Prime Video, Disney+, and more.</p>
       </div>

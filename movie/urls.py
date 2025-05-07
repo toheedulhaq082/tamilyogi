@@ -1,12 +1,12 @@
 from django.urls import path, include
 from . import views
-from .views import HomePageView
+# from .views import HomePageView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
+    path('', views.homepage, name='home'),
     path('anime-tamil-dubbed', views.anime, name='anime'),
     path('kamal-haasan', views.Kamal, name='kamal_haasan'),
     path('vikram', views.vikram, name='vikram'),

@@ -2,6 +2,24 @@ from django.utils.text import slugify
 import random
 import string
 
+def get_language_full_name(language_code):
+    language_map = {
+        'en': 'English',
+        'ta': 'Tamil',
+        'hi': 'Hindi',
+        'te': 'Telugu',
+        'ml': 'Malayalam',
+        'kn': 'Kannada',
+        'fr': 'French',
+        'es': 'Spanish',
+        'de': 'German',
+        'it': 'Italian',
+        'ja': 'Japanese',
+        'ko': 'Korean',
+        'zh': 'Chinese',
+        # Add more as needed
+    }
+    return language_map.get(language_code, 'Unknown')
 
 def drop_decimal_but_first(num):
     # Convert number to string and split it by the decimal point

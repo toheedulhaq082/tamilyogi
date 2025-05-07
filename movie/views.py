@@ -2,12 +2,16 @@ from django.shortcuts import render
 import os
 from dotenv import load_dotenv
 import requests
-from .helpers import drop_decimal_but_first
+from .helpers import drop_decimal_but_first, get_language_full_name
 from .models import BlogModel
 from django.views.generic import TemplateView
 from django.http import Http404
 from django.utils.text import slugify
 from django.http import HttpResponse
+from .movies_lists import (
+    action_movies, thriller_movies, crime_movies,
+    drama_movies, romance_movies, comedy_movies, adventure_movies
+)
 
 
 load_dotenv()
@@ -44,32 +48,16 @@ def robots_txt(request):
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        api_key = TMDB_API_KEY
-        
-        url = 'https://api.themoviedb.org/3/discover/movie'
-        params = {
-            'api_key': api_key,
-            'with_original_language': 'ta',
-            'sort_by': 'vote_average.desc',
-            'vote_count.gte': 100, 
-        }
-
-        try:
-            response = requests.get(url, params=params)
-            response.raise_for_status()
-            data = response.json()
-            context['movies'] = data.get('results', [])
-        except requests.exceptions.RequestException as e:
-            context['movies'] = []
-            context['error'] = str(e)
-        
-        return context
+def homepage(request):
+    return render(request, 'home.html', {
+        'action_movies': action_movies,
+        'thriller_movies': thriller_movies,
+        'crime_movies': crime_movies,
+        'drama_movies': drama_movies,
+        'romance_movies': romance_movies,
+        'comedy_movies': comedy_movies,
+        'adventure_movies': adventure_movies,
+    })
     
 
 
@@ -373,6 +361,8 @@ def movie_detail(request, genre, id, slug):
             all_genre_movies = genre_movies_response.json().get('results', [])
             # Exclude the current movie and pick top 5
             similar_movies = [m for m in all_genre_movies if m['id'] != id][:5]
+
+    language_full = get_language_full_name(movie.get('original_language'))
     
     context = {
         'title': movie.get('title'),
@@ -384,10 +374,10 @@ def movie_detail(request, genre, id, slug):
         'vote_average': movie.get('vote_average'),
         'tagline': movie.get('tagline'),
         'status': movie.get('status'),
-        'language': movie.get('original_language'),
+        'language': language_full,
         'credits': movie.get('credits', {}),
         'similar_movies': similar_movies,
         'selected_genre': genre,
     }
-
+    print(context)
     return render(request, 'movie_detail.html', context)

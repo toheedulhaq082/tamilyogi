@@ -3,7 +3,7 @@ from django.utils.text import slugify
 action_movies = [
     {"title": "Amaran", "id": 927342},
     {"title": "Good Bad Ugly", "id": 1259024},
-    {"title": "Veera Dheera Sooran: Part 2", "id": 1198208-2},
+    {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
     {"title": "Arunachalam", "id": 66245},
     {"title": "Vidaamuyarchi", "id": 949716},
     {"title": "Sivaji: The Boss", "id": 24049},
@@ -24,7 +24,7 @@ action_movies = [
 ]
 
 thriller_movies = [
-    {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
+    # {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
     {"title": "Vidaamuyarchi", "id": 949716},
     {"title": "Test", "id": 1112417},
     {"title": "Kanguva", "id": 622792},
@@ -47,10 +47,10 @@ thriller_movies = [
 ]
 
 crime_movies = [
-    {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
-    {"title": "Good Bad Ugly", "id": 1259024},
-    {"title": "Retro", "id": 1265827},
-    {"title": "Vikram", "id": 743563},
+    # {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
+    # {"title": "Good Bad Ugly", "id": 1259024},
+    # {"title": "Retro", "id": 1265827},
+    # {"title": "Vikram", "id": 743563},
     {"title": "Ratsasan", "id": 412862},
     {"title": "Leo", "id": 949229},
     {"title": "Master", "id": 626392},
@@ -70,13 +70,13 @@ crime_movies = [
 ]
 
 drama_movies = [
-    {"title": "Amaran", "id": 927342},
-    {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
+    # {"title": "Amaran", "id": 927342},
+    # {"title": "Veera Dheera Sooran: Part 2", "id": 1198208},
     {"title": "Arunachalam", "id": 66245},
     {"title": "Retro", "id": 1265827},
     {"title": "Lover", "id": 1219158},
     {"title": "Sivaji: The Boss", "id": 24049},
-    {"title": "Dragon", "id": 1273049},
+    # {"title": "Dragon", "id": 1273049},
     {"title": "Vidaamuyarchi", "id": 949716},
     {"title": "Saravana", "id": 69625},
     {"title": "Jai Bhim", "id": 855400},
@@ -94,7 +94,7 @@ drama_movies = [
 
 romance_movies = [
     {"title": "Lover", "id": 1219158},
-    {"title": "Retro", "id": 1265827},
+    # {"title": "Retro", "id": 1265827},
     {"title": "Dragon", "id": 1273049},
     {"title": "Kadaikutty Singam", "id": 498821},
     {"title": "Saravana", "id": 69625},
