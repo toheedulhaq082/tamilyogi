@@ -23,7 +23,7 @@ Find Online HD Tamil Movies To Watch And Download
 <section>
   <h2 class="text-2xl font-semibold mb-4">Action Movies</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-    {% for movie in action_movies|slice:":5" %}
+    {% for movie in action_movies %}
       <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
         <a href="{% url 'movie_detail' genre='action' id=movie.id slug=movie.title|slugify %}" class="block">
           <!-- Compact view for small screens (mobile) -->
@@ -41,7 +41,7 @@ Find Online HD Tamil Movies To Watch And Download
     {% endfor %}
   </div>
 
-  <h2 class="text-2xl font-semibold mb-4 mt-8">Thriller Movies</h2>
+  {% comment %} <h2 class="text-2xl font-semibold mb-4 mt-8">Thriller Movies</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
     {% for movie in thriller_movies|slice:":5" %}
       <div class="bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
@@ -119,7 +119,7 @@ Find Online HD Tamil Movies To Watch And Download
         </a>
       </div>
     {% endfor %}
-  </div>
+  </div> {% endcomment %}
 </section>
 
 

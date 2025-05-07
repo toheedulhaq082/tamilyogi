@@ -51,12 +51,12 @@ def robots_txt(request):
 def homepage(request):
     return render(request, 'home.html', {
         'action_movies': action_movies,
-        'thriller_movies': thriller_movies,
-        'crime_movies': crime_movies,
-        'drama_movies': drama_movies,
-        'romance_movies': romance_movies,
-        'comedy_movies': comedy_movies,
-        'adventure_movies': adventure_movies,
+        # 'thriller_movies': thriller_movies,
+        # 'crime_movies': crime_movies,
+        # 'drama_movies': drama_movies,
+        # 'romance_movies': romance_movies,
+        # 'comedy_movies': comedy_movies,
+        # 'adventure_movies': adventure_movies,
     })
     
 
